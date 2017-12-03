@@ -5,6 +5,7 @@ namespace AdventOfCode2017Tests;
 
 use AdventOfCode2017\Day01;
 use AdventOfCode2017\Day02;
+use AdventOfCode2017\Day03;
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase {
@@ -73,6 +74,57 @@ class Test extends TestCase {
 	 */
 	function testDay02Part2($input, $output) {
 		$day = new Day02();
+		$this->assertEquals($output, $day->solvePart2($input));
+	}
+
+	function day03Part1Examples() {
+		return [
+			[1, 0],
+			[12, 3],
+			[23, 2],
+			[1024, 31],
+			[312051, 430],
+		];
+	}
+
+	/**
+	 * @dataProvider day03Part1Examples
+	 */
+	function testDay03Part1($input, $output) {
+		$day = new Day03();
+		$this->assertEquals($output, $day->solvePart1($input));
+	}
+
+	function day03Part2HelperExamples() {
+		return [
+			[1, 1],
+			[12, 57],
+			[21, 362],
+			[70, 924406],
+		];
+	}
+
+	/**
+	 * @dataProvider day03Part2HelperExamples
+	 */
+	function testDay03HelperPart2($input, $output) {
+		$day = new Day03();
+		$this->assertEquals($output, $day->solvePart2Helper($input));
+	}
+
+	function day03Part2Examples() {
+		return [
+			[24, 25],
+			[360, 362],
+			[312051, 312453],
+		];
+	}
+
+	/**
+	 * @dataProvider day03Part2Examples
+	 */
+	function testDay03Part2($input, $output) {
+		$day = new Day03();
 		$this->assertEquals($output, $day->solvePart2($input));
 	}
 
