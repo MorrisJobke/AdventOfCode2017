@@ -11,6 +11,7 @@ use AdventOfCode2017\Day05;
 use AdventOfCode2017\Day07;
 use AdventOfCode2017\Day08;
 use AdventOfCode2017\Day09;
+use AdventOfCode2017\Day10;
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase {
@@ -361,6 +362,138 @@ class Test extends TestCase {
 	 */
 	function testDay09Part2($input, $output) {
 		$day = new Day09();
+		$this->assertEquals($output, $day->solvePart2($input));
+	}
+
+	function day10ReverseHelperExamples() {
+		return [
+			[[0, 1, 2, 3, 4], 0, 3, [2, 1, 0, 3, 4]],
+			[[2, 1, 0, 3, 4], 3, 4, [4, 3, 0, 1, 2]],
+			[[4, 3, 0, 1, 2], 1, 1, [4, 3, 0, 1, 2]],
+			[[4, 3, 0, 1, 2], 1, 5, [3, 4, 2, 1, 0]],
+			[[0, 1, 2, 3, 4], 0, 5, [4, 3, 2, 1, 0]],
+			[[0, 1, 2, 3, 4], 0, 0, [0, 1, 2, 3, 4]],
+		];
+	}
+
+	/**
+	 * @dataProvider day10ReverseHelperExamples
+	 */
+	function testDay10ReverseHelper($list, $start, $length, $output) {
+		$day = new Day10();
+		$this->assertEquals($output, $day->reversePart($list, $start, $length));
+	}
+
+	function day10Part1Examples() {
+		return [
+			[[3, 4, 1, 5], 5, 12],
+			[[197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63], 256, 40132]
+		];
+	}
+
+	/**
+	 * @dataProvider day10Part1Examples
+	 */
+	function testDay10Part1($operations, $length, $output) {
+		$day = new Day10();
+		$this->assertEquals($output, $day->solvePart1($operations, $length));
+	}
+
+	function day10AsciiHelperExamples() {
+		return [
+			['1,2,3', [49,44,50,44,51]],
+		];
+	}
+
+	/**
+	 * @dataProvider day10AsciiHelperExamples
+	 */
+	function testDay10AsciiHelper($input, $output) {
+		$day = new Day10();
+		$this->assertEquals($output, $day->convertFromASCII($input));
+	}
+
+	function day10ConvertAndAppendHelperExamples() {
+		return [
+			['1,2,3', [49, 44, 50, 44, 51, 17, 31, 73, 47, 23]],
+			['', [17, 31, 73, 47, 23]],
+		];
+	}
+
+	/**
+	 * @dataProvider day10ConvertAndAppendHelperExamples
+	 */
+	function testDay10ConvertAndAppendHelper($input, $output) {
+		$day = new Day10();
+		$this->assertEquals($output, $day->convertAndAppend($input));
+	}
+
+	function day10RunRoundHelperExamples() {
+		return [
+			[[3, 4, 1, 5, 17, 31, 73, 47, 23], [[2, 1, 0, 6, 5, 4, 3, 7, 8, 9, 10, 15, 14, 13, 12, 11, 16, 17, 18, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 36, 37, 38, 39, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 71, 72, 73, 74, 75, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 149, 150, 151, 152, 153, 154, 201, 200, 199, 198, 197, 196, 195, 194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 181, 180, 179, 178, 177, 176, 175, 174, 173, 172, 171, 170, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 155, 202, 203, 204, 205, 206, 207, 208, 231, 230, 229, 228, 227, 226, 225, 224, 223, 222, 221, 220, 219, 218, 217, 216, 215, 214, 213, 212, 211, 210, 209, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255], 240, 9]],
+		];
+	}
+
+	/**
+	 * @dataProvider day10RunRoundHelperExamples
+	 */
+	function testDay10RunRoundHelper($input, $output) {
+		$list = [];
+		for ($i = 0; $i < 256; $i++) {
+			$list[] = $i;
+		}
+
+		$position = 0;
+		$skip = 0;
+		$day = new Day10();
+		$this->assertEquals($output, $day->runRound($list, $position, $skip, $input));
+	}
+
+	function day10DensifyHelperExamples() {
+		return [
+			[
+				[ 65, 27, 9, 1, 4, 3, 40, 50, 91, 7, 6, 0, 2, 5, 68, 22 ], 64,
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider day10DensifyHelperExamples
+	 */
+	function testDay10DensifyHelper($input, $output) {
+		$day = new Day10();
+		$this->assertEquals($output, $day->xorSlice($input));
+	}
+
+	function day10hexHelperExamples() {
+		return [
+			[[64, 7, 255], '4007ff'],
+		];
+	}
+
+	/**
+	 * @dataProvider day10hexHelperExamples
+	 */
+	function testDay10hexHelper($input, $output) {
+		$day = new Day10();
+		$this->assertEquals($output, $day->hex($input));
+	}
+
+	function day10Part2Examples() {
+		return [
+			['', 'a2582a3a0e66e6e86e3812dcb672a272'],
+			['AoC 2017', '33efeb34ea91902bb2f59c9920caa6cd'],
+			['1,2,3', '3efbe78a8d82f29979031a4aa0b16a9d'],
+			['1,2,4', '63960835bcdc130f0b66d7ff4f6a5a8e'],
+			['197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63', '35b028fe2c958793f7d5a61d07a008c8'],
+		];
+	}
+
+	/**
+	 * @dataProvider day10Part2Examples
+	 */
+	function testDay10Part2($input, $output) {
+		$day = new Day10();
 		$this->assertEquals($output, $day->solvePart2($input));
 	}
 }
