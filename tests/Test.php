@@ -97,6 +97,7 @@ class Test extends TestCase {
 	 * @dataProvider day03Part1Examples
 	 */
 	function testDay03Part1($input, $output) {
+		$this->markTestSkipped('Long running');
 		$day = new Day03();
 		$this->assertEquals($output, $day->solvePart1($input));
 	}
@@ -129,7 +130,7 @@ class Test extends TestCase {
 	/**
 	 * @dataProvider day03Part2Examples
 	 */
-	function xtestDay03Part2($input, $output) {
+	function testDay03Part2($input, $output) {
 		$day = new Day03();
 		$this->assertEquals($output, $day->solvePart2($input));
 	}
@@ -195,7 +196,8 @@ class Test extends TestCase {
 	/**
 	 * @dataProvider day05Part2Examples
 	 */
-	function xtestDay05Part2($input, $output) {
+	function testDay05Part2($input, $output) {
+		$this->markTestSkipped('Long running');
 		$day = new Day05();
 		$this->assertEquals($output, $day->solvePart2($input));
 	}
