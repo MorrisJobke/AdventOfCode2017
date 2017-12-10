@@ -8,6 +8,7 @@ use AdventOfCode2017\Day02;
 use AdventOfCode2017\Day03;
 use AdventOfCode2017\Day04;
 use AdventOfCode2017\Day05;
+use AdventOfCode2017\Day06;
 use AdventOfCode2017\Day07;
 use AdventOfCode2017\Day08;
 use AdventOfCode2017\Day09;
@@ -200,6 +201,21 @@ class Test extends TestCase {
 		$this->markTestSkipped('Long running');
 		$day = new Day05();
 		$this->assertEquals($output, $day->solvePart2($input));
+	}
+
+	function day06Examples() {
+		return [
+			["0 2 7 0", [5, 4]],
+			["4 10 4 1 8 4 9 14 5 1 14 15 0 15 3 5", [12841, 8038]]
+		];
+	}
+
+	/**
+	 * @dataProvider day06Examples
+	 */
+	function testDay06($input, $output) {
+		$day = new Day06();
+		$this->assertEquals($output, $day->solve($input));
 	}
 
 	function day07Part1Examples() {
