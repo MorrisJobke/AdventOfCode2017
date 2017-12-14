@@ -15,6 +15,7 @@ use AdventOfCode2017\Day09;
 use AdventOfCode2017\Day10;
 use AdventOfCode2017\Day11;
 use AdventOfCode2017\Day12;
+use AdventOfCode2017\Day13;
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase {
@@ -566,6 +567,37 @@ class Test extends TestCase {
 	 */
 	function testDay12Part2($input, $output) {
 		$day = new Day12();
+		$this->assertEquals($output, $day->solvePart2($input));
+	}
+
+	function day13Part1Examples() {
+		return [
+			["0: 3\n1: 2\n4: 4\n6: 4", 24],
+			["0: 3\n1: 2\n2: 4\n4: 6\n6: 4\n8: 6\n10: 5\n12: 6\n14: 9\n16: 6\n18: 8\n20: 8\n22: 8\n24: 8\n26: 8\n28: 8\n30: 12\n32: 14\n34: 10\n36: 12\n38: 12\n40: 10\n42: 12\n44: 12\n46: 12\n48: 12\n50: 12\n52: 14\n54: 14\n56: 12\n62: 12\n64: 14\n66: 14\n68: 14\n70: 17\n72: 14\n74: 14\n76: 14\n82: 14\n86: 18\n88: 14\n96: 14\n98: 44", 1504],
+		];
+	}
+
+	/**
+	 * @dataProvider day13Part1Examples
+	 */
+	function testDay13Part1($input, $output) {
+		$day = new Day13();
+		$this->assertEquals($output, $day->solvePart1($input));
+	}
+
+	function day13Part2Examples() {
+		return [
+			["0: 3\n1: 2\n4: 4\n6: 4", 10],
+			["0: 3\n1: 2\n2: 4\n4: 6\n6: 4\n8: 6\n10: 5\n12: 6\n14: 9\n16: 6\n18: 8\n20: 8\n22: 8\n24: 8\n26: 8\n28: 8\n30: 12\n32: 14\n34: 10\n36: 12\n38: 12\n40: 10\n42: 12\n44: 12\n46: 12\n48: 12\n50: 12\n52: 14\n54: 14\n56: 12\n62: 12\n64: 14\n66: 14\n68: 14\n70: 17\n72: 14\n74: 14\n76: 14\n82: 14\n86: 18\n88: 14\n96: 14\n98: 44", 3823370],
+		];
+	}
+
+	/**
+	 * @dataProvider day13Part2Examples
+	 */
+	function testDay13Part2($input, $output) {
+		$this->markTestSkipped('Takes over 5 1/2 minutes to compute on my Laptop');
+		$day = new Day13();
 		$this->assertEquals($output, $day->solvePart2($input));
 	}
 }
