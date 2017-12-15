@@ -16,6 +16,7 @@ use AdventOfCode2017\Day10;
 use AdventOfCode2017\Day11;
 use AdventOfCode2017\Day12;
 use AdventOfCode2017\Day13;
+use AdventOfCode2017\Day14;
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase {
@@ -600,4 +601,38 @@ class Test extends TestCase {
 		$day = new Day13();
 		$this->assertEquals($output, $day->solvePart2($input));
 	}
+
+	function day14Part1Examples() {
+		return [
+			["flqrgnkx", 8108],
+			["vbqugkhl", 8148],
+		];
+	}
+
+	/**
+	 * @dataProvider day14Part1Examples
+	 */
+	function testDay14Part1($input, $output) {
+		$this->markTestSkipped();
+		$day = new Day14();
+		$this->assertEquals($output, $day->solvePart1($input));
+	}
+
+	function day14Part2Examples() {
+		return [
+			["flqrgnkx", 1242],
+			["vbqugkhl", 1180],
+		];
+	}
+
+	/**
+	 * @dataProvider day14Part2Examples
+	 */
+	function testDay14Part2($input, $output) {
+		$this->markTestSkipped();
+		ini_set('xdebug.max_nesting_level', '2000');
+		$day = new Day14();
+		$this->assertEquals($output, $day->solvePart2($input));
+	}
+
 }
