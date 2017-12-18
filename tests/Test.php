@@ -18,6 +18,7 @@ use AdventOfCode2017\Day12;
 use AdventOfCode2017\Day13;
 use AdventOfCode2017\Day14;
 use AdventOfCode2017\Day16;
+use AdventOfCode2017\Day17;
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase {
@@ -651,6 +652,21 @@ class Test extends TestCase {
 	 */
 	function testDay16Part1($input, $output) {
 		$day = new Day16();
+		$this->assertEquals($output, $day->solvePart1($input));
+	}
+
+	function day17Part1Examples() {
+		return [
+			[3, 638],
+			[349, 640],
+		];
+	}
+
+	/**
+	 * @dataProvider day17Part1Examples
+	 */
+	function testDay17Part1($input, $output) {
+		$day = new Day17();
 		$this->assertEquals($output, $day->solvePart1($input));
 	}
 
