@@ -656,6 +656,22 @@ class Test extends TestCase {
 		$this->assertEquals($output, $day->solvePart1($a, $b));
 	}
 
+	function day15Part2Examples() {
+		return [
+			[65, 8921, 309],
+			[634, 301, 294],
+		];
+	}
+
+	/**
+	 * @dataProvider day15Part2Examples
+	 */
+	function testDay15Part2($a, $b, $output) {
+		$this->markTestSkipped();
+		$day = new Day15();
+		$this->assertEquals($output, $day->solvePart2($a, $b));
+	}
+
 	function day16Part1Examples() {
 		return [
 			["s1", "pabcdefghijklmno"],
