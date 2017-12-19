@@ -44,4 +44,24 @@ class Day16 {
 
 		return $state;
 	}
+
+	function solvePart2(string $input): string {
+		$steps = explode(",", $input);
+
+		$state = 'abcdefghijklmnop';
+		$outcome = [];
+		$repeat = 0;
+		for ($i = 0; $i < 1000000000; $i++) {
+			if (in_array($state, $outcome)) {
+				$repeat = $i;
+				break;
+			}
+			$outcome[$i] = $state;
+			foreach ($steps as $step) {
+				$state = $this->dance($state, $step);
+			}
+		}
+
+		return $outcome[1000000000 % $repeat];
+	}
 }
