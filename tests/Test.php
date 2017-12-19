@@ -17,6 +17,7 @@ use AdventOfCode2017\Day11;
 use AdventOfCode2017\Day12;
 use AdventOfCode2017\Day13;
 use AdventOfCode2017\Day14;
+use AdventOfCode2017\Day15;
 use AdventOfCode2017\Day16;
 use AdventOfCode2017\Day17;
 use AdventOfCode2017\Day18;
@@ -637,6 +638,22 @@ class Test extends TestCase {
 		ini_set('xdebug.max_nesting_level', '2000');
 		$day = new Day14();
 		$this->assertEquals($output, $day->solvePart2($input));
+	}
+
+	function day15Part1Examples() {
+		return [
+			[65, 8921, 588],
+			[634, 301, 573],
+		];
+	}
+
+	/**
+	 * @dataProvider day15Part1Examples
+	 */
+	function testDay15Part1($a, $b, $output) {
+		$this->markTestSkipped();
+		$day = new Day15();
+		$this->assertEquals($output, $day->solvePart1($a, $b));
 	}
 
 	function day16Part1Examples() {
