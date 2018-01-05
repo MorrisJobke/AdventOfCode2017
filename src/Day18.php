@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace AdventOfCode2017;
 
-class AbcException extends \Exception {}
-
 class Day18 {
 
 	private $registers = [];
@@ -12,7 +10,7 @@ class Day18 {
 
 	/**
 	 * @param $instruction
-	 * @throws AbcException
+	 * @throws \Exception
 	 */
 	function doIt($instruction) {
 		$parts = explode(' ', $instruction);
@@ -73,11 +71,11 @@ class Day18 {
 			case 'rcv':
 				if (is_numeric($parts[1])) {
 					if ($parts[1] !== 0) {
-						throw new AbcException();
+						throw new \Exception();
 					}
 				} else {
 					if ($this->registers[$parts[1]] !== 0) {
-						throw new AbcException();
+						throw new \Exception();
 					}
 				}
 				break;
@@ -96,7 +94,7 @@ class Day18 {
 			while (true) {
 				$i = ($i + $this->doIt($instructions[$i])) % $length;
 			}
-		} catch (AbcException $e) {
+		} catch (\Exception $e) {
 			return $this->lastSound;
 		}
 		echo "Boom\n";
